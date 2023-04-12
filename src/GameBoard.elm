@@ -207,11 +207,12 @@ cellView opts ( cellPosition, cellState ) =
         , height fill
         , Background.color <| fromRgb <| Color.toRgba <| Color.white
         , onClick <|
-            if opts.readonly == True then
-                NoOp
+            case ( opts.readonly == True, cellState ) of
+                ( False, Empty ) ->
+                    SelectCell cellPosition
 
-            else
-                SelectCell cellPosition
+                _ ->
+                    NoOp
         ]
         (cellContents cellState)
 
