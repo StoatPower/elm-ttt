@@ -207,7 +207,7 @@ cellView opts ( cellPosition, cellState ) =
         , height fill
         , Background.color <| fromRgb <| Color.toRgba <| Color.white
         , onClick <|
-            case ( opts.readonly == True, cellState ) of
+            case ( opts.readonly, cellState ) of
                 ( False, Empty ) ->
                     SelectCell cellPosition
 
